@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anokhi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <!-- Desktop Header -->
+  <header class="desktop-header">
+    <img src="logo.png" alt="Anokhi Logo" class="header-logo" />
+    <div class="email">info@anokhi.com</div>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">New Arrivals</a>
+        <a href="#">Collections</a>
+        <a href="#">Craft</a>
+        <a href="#">About</a>
+        <a href="#">Journal</a>
+        <a href="#">Visit Us</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section class="hero">
+        <div class="hero-image-wrapper">
+          <img
+            id="carousel-image"
+            src="mainpic1.jpg"
+            alt="Artisan fabric or model shot"
+            class="hero-image"
+          />
+        </div>
+        <div class="hero-text">
+          <img src="logo.png" alt="Anokhi Logo" class="hero-logo" />
+          <p class="tagline">Celebrating Heritage Craft through Contemporary Design</p>
+          <a href="#" class="view-work">Explore the Collection &gt;&gt;</a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-left">
+          Anokhi Farm, Todi Ramzanipura, Jagatpura,<br />
+          Jaipur 302017, INDIA
+        </div>
+        <div class="footer-right"><a href="#">Get in Touch</a></div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Mobile Header -->
+  <div class="mobile-header">
+    <img src="logo.png" alt="Anokhi Logo" class="mobile-logo" />
+    <button id="hamburger" class="hamburger">☰</button>
+  </div>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-menu" class="mobile-nav">
+    <button id="close-menu" class="close-btn">✕</button>
+    <a href="#">Home</a>
+    <a href="#">New Arrivals</a>
+    <a href="#">Collections</a>
+    <a href="#">Craft</a>
+    <a href="#">About</a>
+    <a href="#">Journal</a>
+    <a href="#">Visit Us</a>
+    <div class="mobile-email">info@anokhi.com</div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile nav logic
+    window.addEventListener('load', () => {
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const closeMenu = document.getElementById("close-menu");
+
+      if (hamburger && closeMenu && mobileMenu) {
+        hamburger.addEventListener("click", (e) => {
+          e.stopPropagation();
+          mobileMenu.classList.add("active");
+        });
+
+        closeMenu.addEventListener("click", () => {
+          mobileMenu.classList.remove("active");
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+            mobileMenu.classList.remove("active");
+          }
+        });
+      }
+    });
+
+    // Simple hero image carousel
+    const carouselImages = ["mainpic1.jpg", "mainpic2.jpg", "mainpic3.jpg"];
+    let index = 0;
+    const carouselElement = document.getElementById("carousel-image");
+
+    setInterval(() => {
+      index = (index + 1) % carouselImages.length;
+      carouselElement.src = carouselImages[index];
+    }, 4000); // Change every 4 seconds
+  </script>
+</body>
+</html>

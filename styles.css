@@ -1,0 +1,301 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: #362424;
+  text-decoration: none; /* ← This removes the underline */
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:hover,
+a:focus,
+a:active {
+  color: #b8572a;
+  text-decoration: none; /* ← Make sure hover/focus doesn't re-add it */
+  transform: scale(0.97);
+}
+
+
+html {
+  background-image: url('laptop_background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  color: #4b2e2e;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 248, 240, 0.541);
+  z-index: -1;
+}
+
+/* Top Header (Desktop Only) */
+.desktop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px 10px;
+}
+
+.header-logo {
+  max-height: 60px;
+}
+
+.email {
+  font-size: 0.9rem;
+  color: #7a4e3d;
+}
+
+/* Layout */
+.container {
+  display: flex;
+  min-height: 100vh;
+  padding: 30px 40px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 20%;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 200px;
+}
+
+.sidebar nav a {
+  display: block;
+  margin: 12px 0;
+  font-size: 1rem;
+  color: #4b2e2e;
+  transition: color 0.2s ease;
+}
+
+.sidebar nav a:hover {
+  color: #b8572a;
+}
+
+/* Main Content */
+.main-content {
+  width: 80%;
+  padding-left: 20px;
+}
+
+.hero {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.hero-image-wrapper {
+  width: 60%;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+ 
+  object-fit: cover;   /* ensures cropping, not stretching */
+  border-radius: 10px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.hero-text {
+  width: 35%;
+}
+
+.hero-logo {
+  max-width: 160px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  margin-top: 15px;
+  font-style: italic;
+  color: #5a3d33;
+}
+
+.view-work {
+  display: inline-block;
+  margin-top: 25px;
+  font-size: 1rem;
+  color: #4b2e2e;
+}
+
+.view-work:hover {
+  color: #b8572a;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 50px;
+  padding: 0 0 40px;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+}
+
+.footer-left {
+  text-align: left;
+  margin-right: auto;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+.footer a {
+  color: #4b2e2e;
+}
+
+.footer a:hover {
+  color: #b8572a;
+}
+
+/* Mobile & Tablet */
+@media (max-width: 1024px) {
+  .desktop-header {
+    display: none;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image-wrapper,
+  .hero-text {
+    width: 100%;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+  }
+}
+
+/* Mobile Header */
+.mobile-header {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #f7f0e8;
+  padding: 15px 20px;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  border-bottom: 1px solid #ddd;
+}
+
+.mobile-logo {
+  max-height: 40px;
+}
+
+.hamburger {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #4b2e2e;
+}
+
+/* Mobile Nav */
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 80%;
+  background-color: #f7f0e8;
+  padding: 30px 20px;
+  z-index: 999;
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mobile-nav.active {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav a {
+  font-size: 1.2rem;
+  margin: 15px 0;
+}
+
+.mobile-email {
+  margin-top: auto;
+  font-size: 0.9rem;
+  color: #7a4e3d;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  align-self: flex-end;
+  margin-bottom: 20px;
+  color: #4b2e2e;
+  cursor: pointer;
+}
+
+/* Show Mobile Header */
+@media (max-width: 768px) {
+  .mobile-header {
+    display: flex;
+  }
+
+  .hero {
+    margin-top: 100px;
+  }
+}
